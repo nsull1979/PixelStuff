@@ -138,7 +138,14 @@ image1.addEventListener("load", (e)=> {
     function animate(timeStamp){
         delta = timeStamp - lastStamp;
         lastStamp = timeStamp;
-        if(delta > 30000) image1.src = images[++imageIndex];
+        if(delta > 30000){
+            ctx.fillStyle="black";
+            ctx.globalAlpha = 1.0;
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            
+            delta = 0;
+            image1.src = images[++imageIndex];
+        } 
         ctx.globalAlpha = 0.05;
         ctx.fillStyle = 'rgb(0,0,0)';
         ctx.fillRect(0,0,canvas.width,canvas.height);
